@@ -1,27 +1,8 @@
 const express = require('express');
-
+const consign = require('consign');
 let app = express();
 
-app.get('/', (req, res)=>{
-
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<h1>Hi</h1>');
-
-});
-
-app.get('/users', (req, res)=>{
-
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json({
-        users: [{
-            name:'Exemplo',
-            email: 'exemplo@exemplo.com.br',
-            id:1
-        }]
-    });
-});
+consign().include('routes').into(app);
 
 app.listen(3000, '127.0.0.1', ()=>{
 
